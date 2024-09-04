@@ -1,0 +1,60 @@
+{
+  "hospitais": [
+    {
+      "nome": "Hospital Sírio-Libanês",
+      "endereco": "Rua Dona Adma Jafet, 91 - Bela Vista, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital Israelita Albert Einstein",
+      "endereco": "Avenida Albert Einstein, 627 - Morumbi, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital São Luiz - Unidade Itaim",
+      "endereco": "Rua Joaquim Floriano, 654 - Itaim Bibi, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital Oswaldo Cruz",
+      "endereco": "Rua Treze de Maio, 1815 - Bela Vista, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital Alemão Oswaldo Cruz - Unidade Vergueiro",
+      "endereco": "Rua Vergueiro, 1261 - Paraíso, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital Nove de Julho",
+      "endereco": "Rua Peixoto Gomide, 625 - Bela Vista, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital Beneficência Portuguesa",
+      "endereco": "Rua Maestro Cardim, 769 - Paraíso, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital Santa Catarina",
+      "endereco": "Avenida Paulista, 200 - Bela Vista, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital Sancta Maggiore",
+      "endereco": "Rua Voluntários da Pátria, 3097 - Santana, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital Infantil Sabará",
+      "endereco": "Rua Doutor Veiga Filho, 350 - Higienópolis, São Paulo - SP"
+    },
+    {
+      "nome": "Hospital Dom Alvarenga",
+      "endereco": "Av. Nazaré, 1361 - Ipiranga, São Paulo - SP, 04263-200"
+    },
+    {
+      "nome": "Hospital Cruz Azul",
+      "endereco": "Av. Lins de Vasconcelos, 356 - Cambuci, São Paulo - SP, 01538-000"
+    },
+    {
+      "nome": "Hospital e Maternidade São Cristóvão",
+      "endereco": "Rua Américo Ventura, 123 - Parque da Mooca, São Paulo - SP, 03128-020"
+    },
+    {
+      "nome": "Hospital e Maternidade São Luiz São Caetano",
+      "endereco": "R. Walter Figueira, s/n - Cerâmica, São Caetano do Sul - SP, 09531-205"
+    }
+  ]
+}
