@@ -56,3 +56,138 @@ html {
   background-color: transparent !important; /* Desativa o background-color */
   color: #f8f9fa;
 }
+
+.flatpickr-calendar {
+  background-color: #f0f0f0; /* Cor de fundo */
+  border-radius: 10px; /* Bordas arredondadas */
+  border: 1px solid #ccc; /* Borda fina */
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.flatpickr-months {
+  background-color: #0d6efd; /* Fundo azul para a barra de meses */
+  color: #fff; /* Cor do texto em branco */
+  border-radius: 8px 8px 0 0;
+}
+
+.flatpickr-weekday {
+  color: #333; /* Cor dos dias da semana */
+  font-weight: bold;
+}
+
+.flatpickr-day {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.flatpickr-day:hover {
+  background-color: #0d6efd; /* Cor de fundo ao passar o mouse */
+  color: #fff;
+}
+
+.flatpickr-day.today {
+  background-color: #f05a28; /* Cor diferente para o dia atual */
+  color: #fff;
+}
+
+/* Personalizações adicionais das setas */
+.flatpickr-prev-month svg,
+.flatpickr-next-month svg {
+  fill: #fff; /* Cor das setas de navegação */
+}
+.flatpickr-current-month {
+  color: #fff;
+}
+/* Estilos específicos para telas menores (celulares) */
+@media (max-width: 600px) {
+  .flatpickr-calendar {
+    width: 100vw; /* Faz o calendário ocupar toda a largura da tela */
+    border-radius: 0; /* Remove as bordas arredondadas para uma aparência mais fluida em celulares */
+    padding: 5px; /* Reduz o padding em dispositivos móveis */
+  }
+
+  .flatpickr-day {
+    padding: 8px; /* Diminui o espaço dos dias no calendário */
+    font-size: 12px; /* Reduz o tamanho da fonte */
+  }
+
+  .flatpickr-months {
+    font-size: 14px; /* Ajusta o tamanho da fonte do mês */
+  }
+
+  .flatpickr-weekday {
+    font-size: 10px; /* Ajusta o tamanho das legendas dos dias da semana */
+  }
+}
+
+/* Força os botões de navegação a serem grandes o suficiente em dispositivos móveis */
+.flatpickr-prev-month svg,
+.flatpickr-next-month svg {
+  width: 24px;
+  height: 24px;
+}
+
+.col-md-4 {
+  text-align: left;
+}
+
+/* Redefine a variável --bs-table-bg para que não afete sua tabela */
+.table {
+  --bs-table-bg: none; /* Ou qualquer valor neutro que você preferir */
+  background-color: #00178005; /* Define uma cor de fundo padrão */
+  --bs-table-color: none;
+}
+
+/* Caso queira remover a aplicação da variável para tabelas específicas */
+#descricaoh1 {
+  font-size: 25px;
+  margin-top: 90px;
+  font-weight: 800;
+}
+
+#descricaop {
+  width: 50%;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#context {
+  .navbar {
+    width: 50%;
+  }
+
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: inline-block;
+    border-radius: 4px;
+  }
+
+  .navbar a:focus,
+  .navbar a.active:focus,
+  .navbar a:hover,
+  .navbar a.active:hover {
+    color: white;
+    background-color: #0d6dfd54;
+    border: 1px solid white;
+    border-radius: 4px;
+  }
+  letter-spacing: 1px;
+  padding: 10px 10px;
+  ul {
+    list-style: none;
+    width: 50%;
+  }
+}
+
+footer {
+  background-color: #242b33;
+  h5 {
+    margin-top: 50px;
+  }
+}
+

@@ -15,6 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Nerko+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style/style.css" />
     <title>Relatorio</title>
   </head>
@@ -41,7 +45,15 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">Home</a>
           </li>
-
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#"
+              data-bs-toggle="modal"
+              data-bs-target="#formModal"
+              >Preencher Formulario</a
+            >
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="./pages/confimados.html">Confimados</a>
           </li>
@@ -50,20 +62,15 @@
               >Não Confirmados</a
             >
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./pages/ajuda.html">Ajuda</a>
+          </li>
         </ul>
       </div>
     </div>
   </header>
   <body>
     <!-- Botão para abrir o modal -->
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#formModal"
-    >
-      Abrir Formulário
-    </button>
 
     <!-- Modal -->
     <div
@@ -108,6 +115,7 @@
                   />
                 </div>
               </div>
+
               <div class="row mb-3">
                 <div class="col">
                   <label for="dataCirurgia" class="form-label"
@@ -126,6 +134,7 @@
                   />
                 </div>
               </div>
+
               <div class="row mb-3">
                 <div class="col">
                   <label for="doutorResponsavel" class="form-label"
@@ -152,6 +161,31 @@
                   <div id="hospitalList" class="list-group"></div>
                 </div>
               </div>
+
+              <!-- Novo bloco com campos 'Lado' e 'Articulação' -->
+              <div class="row mb-3">
+                <div class="col">
+                  <label for="lado" class="form-label">Lado</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lado"
+                    placeholder="Lado (esquerdo/direito)"
+                  />
+                </div>
+                <div class="col">
+                  <label for="articulacao" class="form-label"
+                    >Articulação</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="articulacao"
+                    placeholder="Articulação"
+                  />
+                </div>
+              </div>
+
               <div class="mb-3">
                 <label for="endereco" class="form-label">Endereço</label>
                 <input
@@ -176,10 +210,58 @@
         </div>
       </div>
     </div>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
+
+    <footer class="footer mt-auto text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <!-- Informação de contato -->
+            <h5>Contato Do Desenvolvedor</h5>
+            <p>Alfredo Allan</p>
+            <p>Email: kali.sonic.developer@gmail.com</p>
+            <p>Telefone: (11) 99410-2660</p>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <p>&copy;4cordas Softwares. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div
+      class="modal fade"
+      id="responseModal"
+      tabindex="-1"
+      aria-labelledby="responseModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">
+              Cliente Salvo com Sucesso
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-secondary"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="modalBody">Cliente Salvo!</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -187,13 +269,61 @@
       crossorigin="anonymous"
     ></script>
     <script src="./script/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        flatpickr("#horarioCirurgia", {
-          enableTime: true,
-          dateFormat: "d/m/Y H:i",
-          time_24hr: true,
-          locale: flatpickr.l10ns.pt,
+        // Ativar flatpickr quando o modal for mostrado
+        const modalElement = document.getElementById("formModal");
+        modalElement.addEventListener("shown.bs.modal", function () {
+          flatpickr("#dataCirurgia", {
+            dateFormat: "d/m/Y",
+            locale: {
+              firstDayOfWeek: 0,
+              weekdays: {
+                shorthand: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+                longhand: [
+                  "Domingo",
+                  "Segunda-feira",
+                  "Terça-feira",
+                  "Quarta-feira",
+                  "Quinta-feira",
+                  "Sexta-feira",
+                  "Sábado",
+                ],
+              },
+              months: {
+                shorthand: [
+                  "Jan",
+                  "Fev",
+                  "Mar",
+                  "Abr",
+                  "Mai",
+                  "Jun",
+                  "Jul",
+                  "Ago",
+                  "Set",
+                  "Out",
+                  "Nov",
+                  "Dez",
+                ],
+                longhand: [
+                  "Janeiro",
+                  "Fevereiro",
+                  "Março",
+                  "Abril",
+                  "Maio",
+                  "Junho",
+                  "Julho",
+                  "Agosto",
+                  "Setembro",
+                  "Outubro",
+                  "Novembro",
+                  "Dezembro",
+                ],
+              },
+            },
+            disableMobile: true,
+          });
         });
       });
     </script>

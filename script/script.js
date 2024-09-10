@@ -18,6 +18,26 @@ document
     });
   });
 
+document.getElementById("lado").addEventListener("input", function (event) {
+  let inputValue = event.target.value;
+
+  // Se o último caractere for um espaço, transforme a primeira letra de cada palavra em maiúscula
+  event.target.value = inputValue.replace(/\b\w/g, function (char) {
+    return char.toUpperCase();
+  });
+});
+
+document
+  .getElementById("articulacao")
+  .addEventListener("input", function (event) {
+    let inputValue = event.target.value;
+
+    // Se o último caractere for um espaço, transforme a primeira letra de cada palavra em maiúscula
+    event.target.value = inputValue.replace(/\b\w/g, function (char) {
+      return char.toUpperCase();
+    });
+  });
+
 document.getElementById("telefone").addEventListener("input", function (event) {
   let inputValue = event.target.value;
 
@@ -90,5 +110,85 @@ document.getElementById("hospital").addEventListener("input", function () {
   // Se não houver entrada, limpe a lista de sugestões
   if (input === "") {
     hospitalList.innerHTML = "";
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const formModal = document.getElementById("formModal");
+
+  // Ação para o botão "Confirmado"
+  const btnConfirmado = document.querySelector(".btn-primary");
+  btnConfirmado.addEventListener("click", function () {
+    enviarFormulario(1); // Confirmado
+  });
+
+  // Ação para o botão "Não Confirmado"
+  const btnNaoConfirmado = document.querySelector(".btn-danger");
+  btnNaoConfirmado.addEventListener("click", function () {
+    enviarFormulario(0); // Não Confirmado
+  });
+
+  // Função para enviar o formulário
+  // Função para enviar o formulário
+  function enviarFormulario(confirmado) {
+    const nome = document.getElementById("nome").value;
+    const telefone = document.getElementById("telefone").value;
+    const dataCirurgia = document.getElementById("dataCirurgia").value;
+    const horarioCirurgia = document.getElementById("horarioCirurgia").value;
+    const doutorResponsavel =
+      document.getElementById("doutorResponsavel").value;
+    const hospital = document.getElementById("hospital").value;
+    const lado = document.getElementById("lado").value;
+    const articulacao = document.getElementById("articulacao").value;
+    const endereco = document.getElementById("endereco").value;
+
+    const data = {
+      nome: nome,
+      telefone: telefone,
+      dataCirurgia: dataCirurgia,
+      horarioCirurgia: horarioCirurgia,
+      doutorResponsavel: doutorResponsavel,
+      hospital: hospital,
+      lado: lado,
+      articulacao: articulacao,
+      endereco: endereco,
+      confirmado: confirmado, // Confirmado ou não
+    };
+
+    fetch("https://4cordas.pythonanywhere.com/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Sucesso:", data);
+
+        // Atualiza o conteúdo do modal
+        document.getElementById("modalBody").textContent = data.message;
+
+        // Mostra o modal
+        const responseModal = new bootstrap.Modal(
+          document.getElementById("responseModal")
+        );
+        responseModal.show();
+      })
+      .catch((error) => {
+        console.error("Erro:", error);
+
+        // Mostra mensagem de erro no modal
+        document.getElementById("modalBody").textContent =
+          "Ocorreu um erro ao salvar!";
+        const responseModal = new bootstrap.Modal(
+          document.getElementById("responseModal")
+        );
+        responseModal.show();
+      });
+
+    // Fechar o modal após enviar o formulário
+    const modalInstance = bootstrap.Modal.getInstance(formModal);
+    modalInstance.hide();
   }
 });
